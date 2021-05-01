@@ -1,9 +1,27 @@
 <html>
-    <head>
-        <title> merhaba 2 </title>
-        <script src="script.js" ></script>
-    </head>
-    <body>
-        merhaba dünya
-    </body>
+  <head>
+    <title>merhaba vue</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ tarih }}
+      <div v-if="number<5">küçüktür 5</div>
+      <div v-else-if="number === 5">5 e eşit</div>
+      <div v-else>büyüktür 5</div>
+
+      <div v-for="(user, index) in users" :key="user.ad">
+        {{ index + user.ad}}
+      </div>
+      <input type="text" :value="tarih" @keyup="handleChange" />
+
+      <input type="text" v-model="tarih" />
+
+      <button @click="merhaba" @mouseover="onHover">merhaba de</button>
+
+      <input type="checkbox" name="ch1" id="ch1" v-model="isChecked" />
+      {{isChecked}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
