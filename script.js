@@ -1,31 +1,40 @@
-var yazi = "yazitipi";
-var numara = 132131;
-var bool = true;
-var nul = null;
-var undif = undefined;
-var na = NaN;
 
-var yazi2 = yazi;
+var var1 = "global scope var";
+let let1 = "";
+const const1 ="";
 
-console.log({ yazi });
-console.log({ yazi2 });
+// scopes
+// 1- global scope
+// 2- function scope
+// 3- block scope
 
-yazi2 = "değiştirilmiş yazı tipi";
-
-console.log({ yazi });
-console.log({ yazi2 });
-
-var array = [1, 2, 3, 4];
-var obj = { key1: "value1", key2: "value2" };
-var func = function(){return 1};
-class klas{
-    constructor(){
-        
-    }
+/* 
+function func1(){
+    var varf = "function scope var"
+    varfg = "global scope varfg"
 }
+for (let i = 0; i<5;i++){
+    console.log({i});
+}
+console.log(i); */
 
-console.log(JSON.stringify(array),JSON.stringify(array2))
-var array2 = array;
-console.log(JSON.stringify(array),JSON.stringify(array2))
-array2.pop();
-console.log(JSON.stringify(array),JSON.stringify(array2))
+
+
+// const const1 ="";
+// const1 = 123;
+
+// const const2 = {
+//     key1 : "value1"
+// }
+// const2.key1 = "value2"
+
+// console.log(const2);
+
+/* const const3 = Object.freeze({
+         key1 : "value1"
+     })
+     const3 = {a:123}
+
+
+console.log(const3); */
+
