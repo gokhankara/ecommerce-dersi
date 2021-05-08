@@ -14,8 +14,10 @@
           </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <b-nav-item v-for="link in rightLinks" :key="link.link">
-            <b-nav-text :to="link.link"> {{ link.title }} </b-nav-text>
+         <b-nav-item v-for="link in rightLinks" :key="link.link">
+            <b-link :to="link.link" router-tag="b-nav-text">
+              {{ link.title }}
+            </b-link>
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>

@@ -7,21 +7,20 @@
       <b-col> <img :src="product.image" :alt="product.title" /> </b-col>
       <b-col>
         <b-row>
-            <b-col>
-
-          <i>{{ product.category }}</i> 
-            </b-col>
+          <b-col>
+            <i>{{ product.category }}</i>
+          </b-col>
         </b-row>
-        <b-row> <b-col>
+        <b-row>
+          <b-col>
             <p>{{ product.description }}</p>
-            </b-col> </b-row>
-        <b-row> <b-col>
-            
-            
-            </b-col> <h2>{{ product.price }}  </h2></b-row>
-        <b-btn variant="primary" @click="() => addToCart(product.id)">
-          add to cart</b-btn
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col> </b-col>
+          <h2>{{ product.price }}</h2></b-row
         >
+        <b-btn variant="primary" @click="addToCart"> add to cart</b-btn>
       </b-col>
     </b-row>
   </b-container>
@@ -234,8 +233,13 @@ export default {
     },
   },
   methods: {
-    addToCart(id) {
-      alert("you added product with id:" + id + "to cart");
+    addToCart() {
+      const basket = window.localStorage.getItem("basket");
+      let newBasket = [this.product];
+      if (basket) {
+        newBasket = [...newBasket, ...JSON.parse(basket)];
+      }
+      window.localStorage.setItem("basket", JSON.stringify(newBasket));
     },
   },
 };
@@ -244,7 +248,7 @@ export default {
 
 <style scoped>
 img {
-    height: 200px;
-    max-width: 200px;
+  height: 200px;
+  max-width: 200px;
 }
 </style>

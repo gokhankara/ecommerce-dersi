@@ -4,6 +4,7 @@ import HelloTurkey from "@/views/HelloTurkey.vue";
 import Pdp from "@/views/Pdp.vue";
 import Plp from "@/views/Plp.vue";
 import ErrorPage from "@/views/ErrorPage.vue";
+import Basket from "@/views/Basket.vue";
 
 
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
   { path: "/pd/:slug-p-:sku", component: Pdp },
   { path: "/l/:categoryId", component: Plp },
   { path: "/l", component: Plp },
+  { path: "/basket", component: Basket},
   //{ path: "/:categorySlug-x-:xId-c:categoryId", component: Plp },
   { path: '*', component: ErrorPage}
 ];
