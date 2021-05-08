@@ -61,8 +61,14 @@
         </b-button>
       </template>
     </b-modal>
-
-
+<hr>
+    
+    count : {{count }}
+{{$store.state.count}}
+  <b-btn @click="increase">increase</b-btn>
+  <br>
+  <input type="number" v-model='increaseCount'>
+  <b-btn @click="increaseN" variant="primary">increaseN</b-btn>
   </div>
 </template>
 
@@ -77,6 +83,7 @@ export default {
       products: [{ id: 1 }, { id: 2 }],
       price: 123123.125123,
       map: new Map(),
+      increaseCount:0
     };
   },
   props: {
@@ -86,8 +93,17 @@ export default {
     comp1() {
       return Math.round(this.price * 100) / 100;
     },
+    count(){
+      return this.$store.state.count
+    }
   },
   methods: {
+    increase(){
+      this.$store.commit('increment')
+    },
+    increaseN(){
+      this.$store.commit('increment',parseInt(this.increaseCount))
+    },
     handleClick(id) {
       console.log(" clicked ", { id });
     },
