@@ -42,7 +42,7 @@
     </user-card>
 
     <user-card>
-      <template #name > Ayhan </template>
+      <template #name> Ayhan </template>
       <template #surname> <b>Sipahi</b> </template>
     </user-card>
 
@@ -56,19 +56,24 @@
         <h3>Hello From This Modal!</h3>
       </div>
       <template #modal-footer>
-        <b-button class="mt-3" variant="danger" block @click="$bvModal.hide('bv-modal-example')">
+        <b-button
+          class="mt-3"
+          variant="danger"
+          block
+          @click="$bvModal.hide('bv-modal-example')"
+        >
           Kapat
         </b-button>
       </template>
     </b-modal>
-<hr>
-    
-    count : {{count }}
-{{$store.state.count}}
-  <b-btn @click="increase">increase</b-btn>
-  <br>
-  <input type="number" v-model='increaseCount'>
-  <b-btn @click="increaseN" variant="primary">increaseN</b-btn>
+    <hr />
+
+    count : {{ count }}
+    {{ $store.state.count }}
+    <b-btn @click="increase">increase</b-btn>
+    <br />
+    <input type="number" v-model="increaseCount" />
+    <b-btn @click="increaseN" variant="primary">increaseN</b-btn>
   </div>
 </template>
 
@@ -83,7 +88,7 @@ export default {
       products: [{ id: 1 }, { id: 2 }],
       price: 123123.125123,
       map: new Map(),
-      increaseCount:0
+      increaseCount: 0,
     };
   },
   props: {
@@ -93,16 +98,16 @@ export default {
     comp1() {
       return Math.round(this.price * 100) / 100;
     },
-    count(){
-      return this.$store.state.count
-    }
+    count() {
+      return this.$store.getters.count;
+    },
   },
   methods: {
-    increase(){
-      this.$store.commit('increment')
+    increase() {
+      this.$store.dispatch("increment");
     },
-    increaseN(){
-      this.$store.commit('increment',parseInt(this.increaseCount))
+    increaseN() {
+      this.$store.dispatch("increment", parseInt(this.increaseCount));
     },
     handleClick(id) {
       console.log(" clicked ", { id });

@@ -8,8 +8,18 @@ const store = new Vuex.Store({
     count: 0
   },
   mutations: {
-    increment (state,payload=1) {
-      state.count +=payload;
+    increment (state, payload) {
+      state.count = payload;
+    }
+  },
+  actions:{
+    increment({state, commit},payload=1){
+      commit('increment', state.count += payload);
+    }
+  },
+  getters:{
+    count(state){
+      return `sayi = ${state.count}`
     }
   }
 })
