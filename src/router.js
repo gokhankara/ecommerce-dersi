@@ -1,24 +1,18 @@
 import VueRouter from 'vue-router';
-import HelloWorld from "@/views/HelloWorld.vue";
-import HelloTurkey from "@/views/HelloTurkey.vue";
-import Pdp from "@/views/Pdp.vue";
-import Plp from "@/views/Plp.vue";
-import ErrorPage from "@/views/ErrorPage.vue";
-import Basket from "@/views/Basket.vue";
-import Login from "@/views/Login.vue";
+
 
 
 const routes = [
-  { path: "/turkey", component: HelloTurkey },
-  { path: "/", component: HelloWorld },
-  { path: "/p/:productId", component: Pdp },
-  { path: "/pd/:slug-p-:sku", component: Pdp },
-  { path: "/l/:categoryId", component: Plp },
-  { path: "/l", component: Plp },
-  { path: "/basket", component: Basket},
-  { path: "/login", component: Login},
-  //{ path: "/:categorySlug-x-:xId-c:categoryId", component: Plp },
-  { path: '*', component: ErrorPage}
+  { path: "/turkey", component:() => import("@/views/HelloTurkey.vue"), },
+  { path: "/", component: ()=>import('@/views/HelloWorld.vue') },
+  { path: "/p/:productId", component: ()=>import('@/views/Pdp.vue') },
+  { path: "/pd/:slug-p-:sku", component: ()=>import('@/views/Pdp.vue') },
+  { path: "/l/:categoryId", component: ()=>import('@/views/Plp.vue') },
+  { path: "/l", component: ()=>import('@/views/Plp.vue') },
+  { path: "/basket", component: ()=>import('@/views/Basket.vue')},
+  { path: "/login", component: ()=>import('@/views/Login.vue')},
+  //{ path: "/:categorySlug-x-:xId-c:categoryId", component: ()=>import('@/views/Plp.vue') },
+  { path: '*', component: ()=>import('@/views/ErrorPage.vue')}
 ];
 
 const router = new VueRouter({
