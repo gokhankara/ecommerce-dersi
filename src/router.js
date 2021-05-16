@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-
+import store from './store'
 
 
 const routes = [
@@ -19,5 +19,24 @@ const router = new VueRouter({
   mode: 'history',
   routes,
 });
+
+router.beforeEach((to, from,next)=>{
+
+  console.log({to,from})
+
+  const isLoggedIn = store.getters['auth/isLoggedIn']
+  console.log({isLoggedIn})
+
+  if ( isLoggedIn && ['/login','/register'].includes(to.path) ){
+   return next('/')
+  } 
+
+  if ( !isLoggedIn && ['/basket'].includes(to.path) ){
+    return next('/login')
+   } 
+
+  next();
+})
+
 
 export default router;
