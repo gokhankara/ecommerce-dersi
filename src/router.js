@@ -5,6 +5,7 @@ import Pdp from "@/views/Pdp.vue";
 import Plp from "@/views/Plp.vue";
 import ErrorPage from "@/views/ErrorPage.vue";
 import Basket from "@/views/Basket.vue";
+import Login from "@/views/Login.vue";
 
 
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
   { path: "/l/:categoryId", component: Plp },
   { path: "/l", component: Plp },
   { path: "/basket", component: Basket},
+  { path: "/login", component: Login},
   //{ path: "/:categorySlug-x-:xId-c:categoryId", component: Plp },
   { path: '*', component: ErrorPage}
 ];

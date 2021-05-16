@@ -99,15 +99,17 @@ export default {
       return Math.round(this.price * 100) / 100;
     },
     count() {
-      return this.$store.getters.count;
+      return this.$store.state.count;
     },
   },
   methods: {
     increase() {
-      this.$store.dispatch("increment");
+      this.$store.commit('SET_COUNT')
+      //this.$store.dispatch("increment");
     },
     increaseN() {
-      this.$store.dispatch("increment", parseInt(this.increaseCount));
+      this.$store.commit('SET_COUNT', parseInt(this.increaseCount));
+      //this.$store.dispatch("increment", parseInt(this.increaseCount));
     },
     handleClick(id) {
       console.log(" clicked ", { id });

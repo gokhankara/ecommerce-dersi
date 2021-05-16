@@ -6,13 +6,13 @@
       </b-col>
       <b-col>
         {{ product.title }}
-        amount:1
+        quantity: {{quantity}}
       </b-col>
       <b-col>
         {{ product.price }}
       </b-col>
       <b-col>
-          <b-button @click="removeFromCart"> delete  </b-button>
+        <b-button @click="removeFromCart"> delete </b-button>
       </b-col>
     </b-row>
   </b-card>
@@ -21,13 +21,25 @@
 <script>
 export default {
   props: {
-    product: {},
+    productId: {},
+    quantity: Number,
   },
-  methods:{
-      removeFromCart(){
-          this.$emit('remove', this.product.id)
-      }
-  }
+  data() {
+    return {
+      product: {},
+    };
+  },
+  methods: {
+    removeFromCart() {
+      this.$emit("remove", this.product.id);
+    },
+  },
+  async mounted() {
+    const { data } = await this.axios.get(
+      "/products/" + this.productId
+    );
+    this.product = data;
+  },
 };
 </script>
 

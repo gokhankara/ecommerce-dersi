@@ -2,31 +2,27 @@
   <div>
     <h1>Basket</h1>
     <b-row v-for="product in products" :key="product.id">
-      <ProductLineItem :product="product" @remove="handleRemoveFromCart" />
+      <ProductLineItem :productId="product.productId" :quantity='product.quantity' @remove="handleRemoveFromCart" />
     </b-row>
   </div>
 </template>
 
-<script >
+<script>
 import ProductLineItem from "@/components/ProductLineItem.vue";
 export default {
   components: { ProductLineItem },
   computed: {
     products() {
-      let productLineItems = window.localStorage.getItem("basket");
-      productLineItems = JSON.parse(productLineItems) || [];
-      return productLineItems;
+      return this.$store.state.basket.products
     },
   },
   methods: {
     handleRemoveFromCart(id) {
-      let productLineItems = JSON.parse(window.localStorage.getItem("basket"));
-      debugger
-      const filteredProducts = productLineItems.filter((p) => {
-        return p.id !== id;
-      });
-      window.localStorage.setItem("basket", JSON.stringify(filteredProducts));
+      this.$store.dispatch('REMOVE_FROM_BASKET',id)
     },
   },
+  async mounted(){
+    await this.$store.dispatch('FETH_CART');
+  }
 };
 </script>
