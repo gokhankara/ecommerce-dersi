@@ -9,7 +9,10 @@ export const LOGOUT = 'LOGOUT';
 
 const state = {
   errors: [],
-  user: null,
+  user: {
+      username:null,
+      token: null
+  },
 };
 
 const mutations = {
@@ -39,12 +42,15 @@ const actions = {
     }
   },
   LOGOUT({ commit }) {
-    commit("SET_USER", null);
+    commit("SET_USER",  {
+        username:null,
+        token: null
+    });
   },
 };
 const getters = {
   isLoggedIn(state) {
-    return !!state.user;
+    return !!state.user.token;
   },
 };
 
